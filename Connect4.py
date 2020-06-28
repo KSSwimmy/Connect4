@@ -27,7 +27,8 @@ while not game_over:
         selection = int(input("Player 2 Make your Selection (0-6):"))
 
     turn += 1 
-    turn = turn % 2
+    turn = turn % 2 # line 29 and 30 is so that the secletion alternates between turns. 
+    #Because we turned the input into an int we have to do a little math.
 
 # had to change the python version in the left bottom corner. 
 # https://medium.com/@syarif.secondchance/vs-code-python-unresolved-import-warning-ea9bba3fa9af
