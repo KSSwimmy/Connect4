@@ -22,8 +22,11 @@ def get_next_open_row(board, column):
         if board[r][column] == 0:
             return r
 
+def print_board(board): # flips the board over to print out correctly 
+    print(np.flip(board, 0))
+
 board = create_board()
-print(board)
+print_board(board)
 game_over = False #the only way this is going to True is if someone got 4 in a row. 
 turn = 0
 
@@ -48,7 +51,7 @@ while not game_over:
             row = get_next_open_row(board, column)
             drop_piece(board, row, column, 2)
         
-    print(board)
+    print_board(board)
 
     turn += 1 
     turn = turn % 2 # line 29 and 30 is so that the secletion alternates between turns (player 1 and player 2). 
