@@ -1,5 +1,8 @@
 import numpy as np 
 
+ROW_COUNT = 6
+COLUMN_COUNT = 7
+
 def create_board(): 
     board = np.zeros((6,7)) #going to make a matrix with all zeros with 6 rows by 7 columns 
     return board
@@ -8,26 +11,47 @@ def create_board():
 # board = create_board()
 # print(board)
 
+def drop_piece(board, row, column, piece):
+    board[row][column] = piece
+
+def is_valid_location(board, column): 
+    return board[5][column] == 0 
+
+def get_next_open_row(board, column):
+    for r in range(ROW_COUNT):
+        if board[r][column] == 0:
+            return r
 
 board = create_board()
+print(board)
 game_over = False #the only way this is going to True is if someone got 4 in a row. 
 turn = 0
 
 while not game_over: 
     # Ask for Player 1 Input
     if turn == 0:
-        selection = int(input("Player 1 Make your Selection (0-6):"))
+        column = int(input("Player 1 Make your Selection (0-6):"))
 
         # print(selection)
         # print(type(selection)) # checked to see what data type it was printing out. 
         # It was printing as a string so the int() went in front of the input 
 
+        if is_valid_location(board, column):
+            row = get_next_open_row(board, column)
+            drop_piece(board, row, column, 1)
+
     # Ask for Player 2 Input
     else: 
-        selection = int(input("Player 2 Make your Selection (0-6):"))
+        column = int(input("Player 2 Make your Selection (0-6):"))
+
+        if is_valid_location(board, column):
+            row = get_next_open_row(board, column)
+            drop_piece(board, row, column, 2)
+        
+    print(board)
 
     turn += 1 
-    turn = turn % 2 # line 29 and 30 is so that the secletion alternates between turns. 
+    turn = turn % 2 # line 29 and 30 is so that the secletion alternates between turns (player 1 and player 2). 
     #Because we turned the input into an int we have to do a little math.
 
 # had to change the python version in the left bottom corner. 
