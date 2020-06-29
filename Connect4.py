@@ -4,7 +4,7 @@ ROW_COUNT = 6
 COLUMN_COUNT = 7
 
 def create_board(): 
-    board = np.zeros((6,7)) #going to make a matrix with all zeros with 6 rows by 7 columns 
+    board = np.zeros((ROW_COUNT,COLUMN_COUNT)) #going to make a matrix with all zeros with 6 rows by 7 columns 
     return board
 
 # prints out the board in the terminal 
@@ -15,7 +15,7 @@ def drop_piece(board, row, column, piece):
     board[row][column] = piece
 
 def is_valid_location(board, column): 
-    return board[5][column] == 0 
+    return board[ROW_COUNT-1][column] == 0 
 
 def get_next_open_row(board, column):
     for r in range(ROW_COUNT):
@@ -24,6 +24,9 @@ def get_next_open_row(board, column):
 
 def print_board(board): # flips the board over to print out correctly 
     print(np.flip(board, 0))
+
+def winning_move(board): # Going to build my own algorithm 
+    pass
 
 board = create_board()
 print_board(board)
