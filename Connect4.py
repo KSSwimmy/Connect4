@@ -26,7 +26,11 @@ def print_board(board): # flips the board over to print out correctly
     print(np.flip(board, 0))
 
 def winning_move(board): # Going to build my own algorithm 
-    pass
+#Check horizontal locations for win
+for c in range(COLUMN_COUNT - 3):
+    for r in range(ROW_COUNT): 
+        if board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:
+            return true
 
 board = create_board()
 print_board(board)
